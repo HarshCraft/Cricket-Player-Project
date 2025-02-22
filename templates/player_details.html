@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Player Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-image: url('https://wallpapercave.com/wp/wp2644743.jpg');
+            background-size: cover;
+            background-position: center;
+            background-attachment: fixed;
+            color: #fff;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: flex-start;
+            width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+            flex-grow: 1;
+            overflow-y: auto;
+        }
+
+        .header {
+            font-size: 50px;
+            font-weight: 600;
+            text-align: center;
+            color: #ffdf00;
+            text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.7);
+            margin-bottom: 40px;
+            animation: fadeIn 1s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .vertical-table {
+            background-color: rgba(0, 0, 0, 0.8);
+            border-radius: 15px;
+            padding: 40px 60px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 20px;
+            width: 100%;
+            max-width: 800px;
+            margin-bottom: 30px;
+            animation: slideIn 0.8s ease-in-out;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .vertical-table div {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            font-size: 20px;
+        }
+
+        .vertical-table div span:first-child {
+            font-weight: 600;
+            color: #ffdf00;
+        }
+
+        .vertical-table div span:last-child {
+            font-weight: 400;
+            color: #ffffff;
+        }
+
+        nav {
+            margin-top: 40px;
+            display: flex;
+            gap: 20px;
+            animation: buttonFade 0.6s ease-in-out;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 18px;
+            font-weight: bold;
+            cursor: pointer;
+            border-radius: 8px;
+            transition: background-color 0.3s ease, transform 0.3s ease;
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            position: relative;
+        }
+
+        button:hover {
+            background-color: #218838;
+            transform: translateY(-3px);
+        }
+
+        @keyframes buttonFade {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        form {
+            margin-top: 40px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+            max-width: 800px;
+        }
+
+        form label {
+            font-weight: 600;
+            color: #ffdf00;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            border: 2px solid #fff;
+            border-radius: 5px;
+            background: rgba(255, 255, 255, 0.1);
+            color: #fff;
+            font-size: 16px;
+        }
+
+        form button {
+            background-color: #007bff;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #0056b3;
+        }
+
+        /* New styles for reviews section */
+        .reviews-section {
+            background-color: rgba(0, 0, 0, 0.7);
+            padding: 20px;
+            border-radius: 10px;
+            width: 100%;
+            max-width: 800px;
+            margin-top: 30px;
+        }
+
+        .reviews-table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        .reviews-table th, .reviews-table td {
+            border: 1px solid #fff;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .reviews-table th {
+            background-color: #ffdf00;
+            color: #000;
+        }
+
+        .reviews-table tr:nth-child(even) {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            .vertical-table {
+                padding: 30px 40px;
+            }
+
+            button {
+                width: 100%;
+            }
+
+            nav {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="content">
+        <div class="header">
+            <b>Player Details</b>
+        </div>
+        <div class="vertical-table">
+            <div>
+                <span>Name:</span>
+                <span>{{ player['name'] }}</span>
+            </div>
+            <div>
+                <span>Jersey Number:</span>
+                <span>{{ player['jersey_number'] }}</span>
+            </div>
+            <div>
+                <span>Matches Played:</span>
+                <span>{{ player['matches_played'] }}</span>
+            </div>
+            <div>
+                <span>Wickets Taken:</span>
+                <span>{{ player['wickets_taken'] }}</span>
+            </div>
+            <div>
+                <span>Runs Scored:</span>
+                <span>{{ player['runs_scored'] }}</span>
+            </div>
+            <div>
+                <span>Type of Player:</span>
+                <span>{{ player['special_skill'] }}</span>
+            </div>
+            <nav>
+                <a href="{{ url_for('index') }}">
+                    <button type="button">Back to Home</button>
+                </a>
+                <a href="{{ url_for('player_list') }}">
+                    <button type="button">View All Players</button>
+                </a>
+                <a href="{{ url_for('more_info', player_id=player['_id']) }}">
+                    <button type="button">More Info</button>
+                </a>
+            </nav>
+        </div>
+
+        <div class="reviews-section">
+            <h2>Player Reviews</h2>
+            {% if current_user.is_authenticated %}
+                <form action="{{ url_for('player_details', player_id=player['_id']) }}" method="POST">
+                    <label for="rating">Rating:</label>
+                    <input type="number" id="rating" name="rating" min="1" max="5" required>
+                    
+                    <label for="review">Review:</label>
+                    <textarea id="review" name="review" required></textarea>
+                    
+                    <button type="submit">Submit Review</button>
+                </form>
+            {% else %}
+                <p>Please <a href="{{ url_for('login') }}">log in</a> to submit a review.</p>
+            {% endif %}
+
+            <table class="reviews-table">
+                <thead>
+                    <tr>
+                        <th>Review</th>
+                        <th>Rating</th>
+                        <th>Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for review in reviews %}
+                        <tr>
+                            <td>{{ review['review'] }}</td>
+                            <td>{{ review['rating'] }}</td>
+                            <td>
+                                {% if current_user.is_authenticated and current_user.id == review['user_id'] %}
+                                    <form action="{{ url_for('delete_review', player_id=player['_id'], review_id=review['_id']) }}" method="POST" style="display:inline;">
+                                        <button type="submit" onclick="return confirm('Are you sure you want to delete this review?');">Delete</button>
+                                    </form>
+                                {% endif %}
+                            </td>
+                        </tr>
+                    {% else %}
+                        <tr>
+                            <td colspan="3">No reviews yet.</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</body>
+</html>

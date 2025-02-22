@@ -1,0 +1,132 @@
+body {
+    text-align: center;
+    font-family: 'Verdana', sans-serif;
+    font-weight: bold;
+    margin: 2px;
+    padding: 5px;
+    background: url('https://static.vecteezy.com/system/resources/thumbnails/032/976/325/small_2x/night-view-of-melbourne-cricket-ground-generative-ai-photo.jpg') no-repeat center center fixed; /* Add your image path here */
+    background-size: cover;
+    color: #f10606;
+
+}
+
+h1 {
+    text-align: center;
+    margin: 60px 0;
+    color:#f5f5f5;
+    font-size: 3.5em;
+    text-transform: uppercase;
+}
+
+nav {
+    text-align: center;
+    margin-bottom: 20px;
+ 
+    padding: 10px 0;
+    border-radius: 8px;
+}
+
+nav a {
+    margin: 0 15px;
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 8px 16px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+nav a:hover {
+    background-color: rgba(0, 86, 179, 0.8); 
+}
+
+form {
+    width: 500px;
+    margin: 80px auto;
+    background-color: rgba(255, 255, 255, 0.9); 
+    padding: 25px;
+    border: 8px solid #dee2e6;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #555;
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ced4da;
+    border-radius: 4px;
+    font-size: 1em;
+    transition: border-color 0.3s ease;
+}
+
+input:focus {
+    border-color: #007bff;
+    outline: none;
+}
+
+button {
+    width: 25%;
+    padding: 15px;
+    background-color: #136eb0;
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #136eb0;
+}
+
+table {
+    width: 90%;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.9); 
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+table, th, td {
+    border: 1px solid #dee2e6;
+}
+
+th, td {
+    padding: 12px;
+    text-align: center;
+    font-size: 1em;
+}
+
+th {
+    background-color: #54a666;
+    background-color: (116, 244, 65, 0.8); 
+    color: #ffffff;
+    text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+    background-color: rgba(242, 242, 242, 0.9); 
+}
+
+a {
+    color: #007bff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+}
+
+a:hover {
+    color: #0056b3;
+}

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Year-wise Performance</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: #f0f0f0;
+        }
+
+        .container {
+            max-width: 500px;
+            margin: 40px auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin: 10px 0 5px;
+        }
+
+        input[type="number"] {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #28a745;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #218838;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+
+        .delete-button {
+            background-color: #dc3545;
+            margin-left: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Add Year-wise Performance</h1>
+        <form action="{{ url_for('add_performance', player_id=player_id) }}" method="POST">
+            <label for="year">Year:</label>
+            <input type="number" id="year" name="year" required>
+            
+            <label for="matches_played">Matches Played:</label>
+            <input type="number" id="matches_played" name="matches_played" required>
+            
+            <label for="runs_scored">Runs Scored:</label>
+            <input type="number" id="runs_scored" name="runs_scored" required>
+            
+            <label for="wickets_taken">Wickets Taken:</label>
+            <input type="number" id="wickets_taken" name="wickets_taken" required>
+            
+            <div class="button-container">
+                <button type="submit">Add Performance</button>
+            </div>
+        </form>
+        <div class="button-container">
+            <a href="{{ url_for('more_info', player_id=player_id) }}">
+                <button type="button">Back to More Info</button>
+            </a>
+          <br>
+        </div>
+    </div>
+</body>
+</html>

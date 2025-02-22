@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More Info - {{ player['name'] }}</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-image: url('');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            color: #333;
+        }
+
+        h1 {
+            text-align: center;
+            color: #fff;
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 10px;
+            border-radius: 10px;
+            font-size: 2.5rem;
+            margin-bottom: 30px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+            background-color: rgba(255, 255, 255, 0.8);
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        th {
+            background-color: #007bff;
+            color: white;
+            text-transform: uppercase;
+        }
+
+        td {
+            background-color: #f8f9fa;
+        }
+
+        .button-container {
+            display: flex;
+            justify-content: center;
+            margin-top: 30px;
+        }
+
+        .button-container a {
+            text-decoration: none;
+            margin: 0 15px;
+        }
+
+        button {
+            background-color: #007bff;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1rem;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .delete-btn {
+            background-color: #dc3545;
+        }
+
+        .delete-btn:hover {
+            background-color: #c82333;
+        }
+
+        .table-actions {
+            display: flex;
+            justify-content: center;
+        }
+
+    </style>
+</head>
+<body>
+    <h1>Year-wise Performance for {{ player['name'] }}</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Year</th>
+                <th>Matches Played</th>
+                <th>Runs Scored</th>
+                <th>Wickets Taken</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for performance in performances %}
+            <tr>
+                <td>{{ performance['year'] }}</td>
+                <td>{{ performance['matches_played'] }}</td>
+                <td>{{ performance['runs_scored'] }}</td>
+                <td>{{ performance['wickets_taken'] }}</td>
+                <td class="table-actions">
+                    <a href="{{ url_for('delete_performance', player_id=player['_id'], year=performance['year']) }}">
+                        <button type="button" class="delete-btn">Delete</button>
+                    </a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <div class="button-container">
+        <a href="{{ url_for('add_performance', player_id=player['_id']) }}">
+            <button type="button">Add Year-wise Performance</button>
+        </a>
+        <a href="{{ url_for('player_list') }}">
+            <button type="button">Back to Player List</button>
+        </a>
+    </div>
+</body>
+</html>

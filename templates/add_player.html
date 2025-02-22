@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Player</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: url('https://www.shutterstock.com/image-vector/batsman-playing-cricket-on-abstract-260nw-2391521289.jpg') no-repeat center center fixed;            
+            background-size: cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.8);
+            padding: 50px;
+            border-radius: 30px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            max-width: 400px;
+            width: 100%;
+            text-align: center;
+            position: relative;
+        }
+
+        h1 {
+            color: #2c3e50;
+            margin-bottom: 30px;
+        }
+
+        .back-button {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            margin-bottom: 20px;
+            text-decoration: none;
+            position: absolute;
+            top: 20px;
+            left: 20px;
+        }
+
+        .back-button:hover {
+            background-color: #0056b3;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-weight: bold;
+            color: #34495e;
+            margin-bottom: 8px;
+            text-align: left;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            padding: 10px;
+            margin-bottom: 20px;
+            border: none;
+            border-radius: 5px;
+            background-color: rgba(255, 255, 255, 0.9);
+        }
+
+        button[type="submit"] {
+            padding: 12px;
+            background-color: #2ecc71;
+            border: none;
+            border-radius: 5px;
+            margin-top: 10px;
+            color: white;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            width: 100%;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #27ae60;
+        }
+
+        
+        @media (max-width: 768px) {
+            .container {
+                width: 90%;
+            }
+
+            .back-button {
+                padding: 8px 15px;
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="{{ url_for('index') }}" class="back-button">Back to Home</a>
+        <h1>Add New Player</h1>
+        <form action="{{ url_for('add_player') }}" method="POST">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" required>
+            
+            <label for="jersey_number">Jersey Number:</label>
+            <input type="number" id="jersey_number" name="jersey_number" required>
+            
+            <label for="matches_played">Matches Played:</label>
+            <input type="number" id="matches_played" name="matches_played" required>
+            
+            <label for="wickets_taken">Wickets Taken:</label>
+            <input type="number" id="wickets_taken" name="wickets_taken" required>
+            
+            <label for="runs_scored">Runs Scored:</label>
+            <input type="number" id="runs_scored" name="runs_scored" required>
+            
+            <label for="special_skill">Type of player:</label>
+            <input type="text" id="special_skill" name="special_skill" required>
+            
+            <button type="submit">Add Player</button>
+        </form>
+    </div>
+</body>
+</html>
